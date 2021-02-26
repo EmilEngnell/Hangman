@@ -23,7 +23,7 @@ namespace Hangman
             listwords[8] = "jason";
             listwords[9] = "kruger";
             listwords[10] = "creed";
-            listwords[11] = "hassasin";
+            listwords[11] = "pennywise";
             listwords[12] = "myers";
             listwords[13] = "holmes";
             listwords[14] = "mengele";
