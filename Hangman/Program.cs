@@ -43,7 +43,8 @@ namespace Hangman
             Random randGen = new Random();
             var idx = randGen.Next(0, 24);
             string mysteryWord = listwords[idx];
-            char[] guess = new char[mysteryWord.Length];
+            string mysteryWordUppercase = mysteryWord.ToUpper();
+            //char[] playerGuess = new char[mysteryWord.Length];
 
             StringBuilder displayToPlayer = new StringBuilder(mysteryWord.Length);
             for (int p = 0; p < mysteryWord.Length; p++)
@@ -77,16 +78,16 @@ namespace Hangman
                     continue;
                 }
 
-                if (mysteryWord.Contains(playerGuess))
+                if (mysteryWordUppercase.Contains(playerGuess))
                 {
                     correctLetter.Add(playerGuess);
 
-                    playerGuess = char.Parse(Console.ReadLine());
+                   // playerGuess = char.Parse(Console.ReadLine());
                     for (int j = 0; j < mysteryWord.Length; j++)
                     {
-                        if (playerGuess == mysteryWord[j])
+                        if (mysteryWordUppercase[j] == playerGuess)
                         {
-                            guess[j] = playerGuess;
+                            displayToPlayer[j] = mysteryWord[j];
                             lettersRevealed++;
 
                         }
