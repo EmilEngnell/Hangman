@@ -30,7 +30,7 @@ namespace Hangman
             listwords[12] = "myers";
             listwords[13] = "holmes";
             listwords[14] = "mengele";
-            listwords[15] = "cuomo";
+            listwords[15] = "seth";
             listwords[16] = "kingping";
             listwords[17] = "macbeth";
             listwords[18] = "brutus";
