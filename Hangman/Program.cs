@@ -59,7 +59,7 @@ namespace Hangman
             string input;
             char playerGuess;
 
-            while (!won && lives > 0);
+            while (!won && lives > 0)
             {
                 Console.WriteLine("Pick a letter for your clue");
 
@@ -68,12 +68,12 @@ namespace Hangman
 
                 if (correctLetter.Contains(playerGuess))
                 {
-                    Console.WriteLine("Yeah, I heard you last time you said '{0}', you need some other clues as well.", playerGuess);
+                    Console.WriteLine("Yeah, I heard you last time you said that, you need some other clues as well.", playerGuess);
                     continue;
                 }
                 else if (incorrectLetter.Contains(playerGuess))
                 {
-                    Console.WriteLine("Look, you have already tried '{0}', and it's still wrong.", playerGuess);
+                    Console.WriteLine("Look, you have already tried that', and it's still wrong.", playerGuess);
                     continue;
                 }
 
@@ -100,14 +100,23 @@ namespace Hangman
                 {
                     incorrectLetter.Add(playerGuess);
 
-                    Console.WriteLine("Oops! Looks like '{0}' has no connection to the real culprit!");
+                    Console.WriteLine("Oops! Looks like there is no connection to the real culprit!");
                     lives--;
                 }
 
                 if (won)
                     Console.WriteLine("Congratulations! You gathered enought clues to catch the real killer!\n You have managed to survive the Hangman\n Unlike the real killer.");
-                else
+
+                else if (lives == 0)
+                {
                     Console.WriteLine("How sad, the killer got away...\n And you got Hanged in his place");
+                    break;
+                }
+                else
+                {
+                  
+                }
+
                 Console.WriteLine(guess);
             }
         }
