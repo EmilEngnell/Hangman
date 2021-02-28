@@ -47,7 +47,7 @@ namespace Hangman
 
             StringBuilder displayToPlayer = new StringBuilder(mysteryWord.Length);
             for (int p = 0; p < mysteryWord.Length; p++)
-                guess[p] = '_';
+                displayToPlayer.Append('_');
 
             List<char> correctLetter = new List<char>();
             List<char> incorrectLetter = new List<char>();
@@ -117,7 +117,7 @@ namespace Hangman
                   
                 }
 
-                Console.WriteLine(playerGuess);
+                Console.WriteLine(displayToPlayer);
             }
         }
     }
