@@ -81,7 +81,7 @@ namespace Hangman
                 {
                     correctLetter.Add(playerGuess);
 
-                    //char playerGuess = char.Parse(Console.ReadLine());
+                    playerGuess = char.Parse(Console.ReadLine());
                     for (int j = 0; j < mysteryWord.Length; j++)
                     {
                         if (playerGuess == mysteryWord[j])
@@ -117,7 +117,7 @@ namespace Hangman
                   
                 }
 
-                Console.WriteLine(guess);
+                Console.WriteLine(playerGuess);
             }
         }
     }
