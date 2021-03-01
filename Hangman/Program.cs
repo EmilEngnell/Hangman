@@ -25,7 +25,7 @@ namespace Hangman
             listwords[7] = "jeff";
             listwords[8] = "jason";
             listwords[9] = "kruger";
-            listwords[10] = "creed";
+            listwords[10] = "kain";
             listwords[11] = "pennywise";
             listwords[12] = "myers";
             listwords[13] = "holmes";
@@ -75,9 +75,10 @@ namespace Hangman
                 playerGuess = input[0];
 
                 if (input == mysteryWordUppercase)
-                {;
-                    lettersRevealed++;
+                {
+                    mysteryWord.ToCharArray();
                     won = true; 
+
                 }
 
                 if (correctLetter.Contains(playerGuess))
