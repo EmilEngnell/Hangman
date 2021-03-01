@@ -14,9 +14,9 @@ namespace Hangman
             Console.WriteLine(" \nYou have been found at a murderscene\nAnd the polise suspects you of being the murderer\nHow scary");
             Console.WriteLine("Your only chanse of escape execution through hanging is to catch the real killer\n A killer that you saw running away from the scene");
             Console.WriteLine("Put letters together as clues to the killer's true identity in order to redeem yourself\n You have 10 days");
-            string[] listwords = new string[25];
+            string[] listwords = new string[30];
             listwords[0] = "bundy";
-            listwords[1] = "vlad";
+            listwords[1] = "tepes";
             listwords[2] = "hannibal";
             listwords[3] = "zodiac";
             listwords[4] = "ripper";
@@ -40,6 +40,11 @@ namespace Hangman
             listwords[22] = "lucien";
             listwords[23] = "malcolm";
             listwords[24] = "bluebeard";
+            listwords[25] = "godfather";
+            listwords[26] = "vader";
+            listwords[27] = "modred";
+            listwords[28] = "dracula";
+            listwords[29] = "hyde";
             Random randGen = new Random();
             var idx = randGen.Next(0, 24);
             string mysteryWord = listwords[idx];
@@ -60,12 +65,20 @@ namespace Hangman
             string input;
             char playerGuess;
 
+            
+
             while (!won && lives > 0)
             {
                 Console.WriteLine("Pick a letter for your clue");
 
                 input = Console.ReadLine().ToUpper();
                 playerGuess = input[0];
+
+                if (input == mysteryWordUppercase)
+                {;
+                    lettersRevealed++;
+                    won = true; 
+                }
 
                 if (correctLetter.Contains(playerGuess))
                 {
@@ -89,11 +102,9 @@ namespace Hangman
                         {
                             displayToPlayer[j] = mysteryWord[j];
                             lettersRevealed++;
-
                         }
-
+                        
                     }
-
                     if (lettersRevealed == mysteryWord.Length)
                         won = true;
                 }
