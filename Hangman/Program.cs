@@ -46,7 +46,7 @@ namespace Hangman
             listwords[28] = "dracula";
             listwords[29] = "hyde";
             Random randGen = new Random();
-            var idx = randGen.Next(0, 24);
+            var idx = randGen.Next(0, 30);
             string mysteryWord = listwords[idx];
             string mysteryWordUppercase = mysteryWord.ToUpper();
             //char[] playerGuess = new char[mysteryWord.Length];
@@ -55,8 +55,9 @@ namespace Hangman
             for (int p = 0; p < mysteryWord.Length; p++)
                 displayToPlayer.Append('_');
 
-            List<char> correctLetter = new List<char>();
-            List<char> incorrectLetter = new List<char>();
+           
+            char[] incorrectLetter = mysteryWord.ToCharArray();
+            char[] correctLetter = new char[mysteryWord.Length];
 
             int lives = 10;
             bool won = false;
@@ -70,6 +71,7 @@ namespace Hangman
             while (!won && lives > 0)
             {
                 Console.WriteLine("Pick a letter for your clue");
+                
 
                 input = Console.ReadLine().ToUpper();
                 playerGuess = input[0];
@@ -94,9 +96,9 @@ namespace Hangman
 
                 if (mysteryWordUppercase.Contains(playerGuess))
                 {
-                    correctLetter.Add(playerGuess);
-
-                   // playerGuess = char.Parse(Console.ReadLine());
+                    //correctLetter.Add(playerGuess);
+                    
+                    //playerGuess = char.Parse(Console.ReadLine());
                     for (int j = 0; j < mysteryWord.Length; j++)
                     {
                         if (mysteryWordUppercase[j] == playerGuess)
@@ -111,7 +113,7 @@ namespace Hangman
                 }
                 else
                 {
-                    incorrectLetter.Add(playerGuess);
+                    //incorrectLetter.Add(playerGuess);
 
                     Console.WriteLine("Oops! Looks like there is no connection to the real culprit!");
                     lives--;
