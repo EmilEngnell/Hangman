@@ -49,15 +49,21 @@ namespace Hangman
             var idx = randGen.Next(0, 30);
             string mysteryWord = listwords[idx];
             string mysteryWordUppercase = mysteryWord.ToUpper();
+            //string mysteryWord = listwords[Random.Next(listwords.Length)];
             //char[] playerGuess = new char[mysteryWord.Length];
 
             StringBuilder displayToPlayer = new StringBuilder(mysteryWord.Length);
-            for (int p = 0; p < mysteryWord.Length; p++)
-                displayToPlayer.Append('_');
+           
 
            
             char[] incorrectLetter = mysteryWord.ToCharArray();
             char[] correctLetter = new char[mysteryWord.Length];
+
+            Array.Fill(correctLetter,'_'); //switch correctletter to other string?
+
+            for (int p = 0; p < mysteryWord.Length; p++)
+                displayToPlayer.Append('_');
+
 
             int lives = 10;
             bool won = false;
@@ -75,9 +81,11 @@ namespace Hangman
 
                 input = Console.ReadLine().ToUpper();
                 playerGuess = input[0];
+                
 
                 if (input == mysteryWordUppercase)
-                {
+                { 
+
                     mysteryWord.ToCharArray();
                     won = true; 
 
@@ -85,6 +93,7 @@ namespace Hangman
 
                 if (correctLetter.Contains(playerGuess))
                 {
+
                     Console.WriteLine("Yeah, I heard you last time you said that, you need some other clues as well.", playerGuess);
                     continue;
                 }
@@ -96,15 +105,16 @@ namespace Hangman
 
                 if (mysteryWordUppercase.Contains(playerGuess))
                 {
-                    //correctLetter.Add(playerGuess);
                     
-                    //playerGuess = char.Parse(Console.ReadLine());
+                    playerGuess = char.Parse(Console.ReadLine());
                     for (int j = 0; j < mysteryWord.Length; j++)
                     {
                         if (mysteryWordUppercase[j] == playerGuess)
                         {
+                            Console.WriteLine("Hmm, interesting.", playerGuess);
                             displayToPlayer[j] = mysteryWord[j];
                             lettersRevealed++;
+                           
                         }
                         
                     }
@@ -113,10 +123,13 @@ namespace Hangman
                 }
                 else
                 {
-                    //incorrectLetter.Add(playerGuess);
+                    incorrectLetter.Append(playerGuess);
+                    incorrectLetter.Append(' ');
+                    
 
-                    Console.WriteLine("Oops! Looks like there is no connection to the real culprit!");
+                    Console.WriteLine("Oops! Looks like there is no connection to the real culprit!", playerGuess);
                     lives--;
+                    Console.WriteLine("Lives Left:" + lives);
                 }
 
                 if (won)
